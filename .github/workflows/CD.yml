@@ -18,9 +18,11 @@ jobs:
 
   build-arm:
     name: 🦾 Build and deploy arm64v8 docker image
-    uses: WGBH-MLA/.github/.github/workflows/build.yml@tags
+    uses: WGBH-MLA/.github/.github/workflows/build.yml@buildx
     with:
       file: arm64.dockerfile
+      buildx: true
+      platforms: linux/arm64
       tags: |
         type=schedule,prefix=arm64-
         type=ref,event=branch,prefix=arm64-
