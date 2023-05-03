@@ -27,4 +27,4 @@ jobs:
         type=schedule,prefix=arm64-
         type=ref,event=branch,prefix=arm64-
         type=ref,event=tag,prefix=arm64-
-        type=ref,event=pr,prefix=arm64-
+        type=ref,event=pr,prefix=arm64-pr-
