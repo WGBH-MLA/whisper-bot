@@ -12,6 +12,19 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
-    name: 🔨 Build and deploy docker image
+  build-main:
+    name: 🔨 Build and deploy default docker image
     uses: WGBH-MLA/.github/.github/workflows/build.yml@main
+
+  build-arm:
+    name: 🦾 Build and deploy arm64v8 docker image
+    uses: WGBH-MLA/.github/.github/workflows/build.yml@main
+    with:
+      file: arm64.dockerfile
+      buildx: true
+      platforms: linux/arm64
+      tags: |
+        type=schedule,prefix=arm64-
+        type=ref,event=branch,prefix=arm64-
+        type=ref,event=tag,prefix=arm64-
+        type=ref,event=pr,prefix=arm64-pr-
